@@ -1,0 +1,50 @@
+<div class="user-list-container">
+  <h2 class="page-title">Users</h2>
+
+  <div class="search-bar">
+    <input
+      type="text"
+      placeholder="Search by name..."
+      [(ngModel)]="searchTerm"
+      (input)="filterUsers()"
+    />
+  </div>
+  <div *ngIf="error" class="error-message">
+    <p>Failed to load users.</p>
+    <button nz-button nzType="primary" (click)="loadUsers()">Retry</button>
+  </div>
+  <nz-skeleton
+    *ngIf="loading"
+    [nzActive]="true"
+    [nzParagraph]="{ rows: 10 }"
+    [nzTitle]="false"
+  ></nz-skeleton>
+  <div *ngIf="!loading && !error">
+    <div *ngIf="filteredUsers.length > 0; else noUsersTpl" class="user-grid">
+      <div
+        class="user-card"
+        *ngFor="let user of filteredUsers"
+        (click)="goToDetail(user.id)"
+      >
+        <div class="user-avatar">{{ user.name[0] }}</div>
+        <h3>{{ user.name }}</h3>
+        <p class="email">{{ user.email }}</p>
+
+        <p>
+          <i nz-icon nzType="environment" nzTheme="outline"></i>
+          {{ user.address.city }}
+        </p>
+        <p>
+          <i nz-icon nzType="bank" nzTheme="outline"></i>
+          {{ user.company.name }}
+        </p>
+      </div>
+    </div>
+    <ng-template #noUsersTpl>
+      <nz-empty
+        nzNotFoundImage="simple"
+        [nzNotFoundContent]="'No users found matching your search.'"
+      ></nz-empty>
+    </ng-template>
+  </div>
+</div>

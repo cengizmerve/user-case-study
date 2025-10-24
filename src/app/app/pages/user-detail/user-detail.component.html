@@ -1,0 +1,24 @@
+<div *ngIf="loading" class="loading-overlay">
+  <nz-spin nzTip="Loading user details..." nzSize="large"></nz-spin>
+</div>
+
+<div *ngIf="!loading && user" class="detail-container">
+  <div class="user-header">
+    <button nz-button nzType="default" class="back-btn" (click)="goBack()">
+      <i nz-icon nzType="arrow-left"></i> Back to Users
+    </button>
+
+    <div class="avatar">{{ user.name[0] }}</div>
+    <h2>{{ user.name }}</h2>
+    <p class="username">@{{ user.username }}</p>
+  </div>
+
+  <div class="info-section">
+    <p><i nz-icon nzType="mail"></i> {{ user.email }}</p>
+    <p><i nz-icon nzType="phone"></i> {{ user.phone }}</p>
+    <p><i nz-icon nzType="global"></i> <a [href]="'http://' + user.website" target="_blank">{{ user.website }}</a></p>
+    <p><i nz-icon nzType="environment"></i> {{ user.address.street }}, {{ user.address.city }}</p>
+    <p><i nz-icon nzType="bank"></i> {{ user.company.name }}</p>
+    <p class="slogan"><i nz-icon nzType="smile"></i> "{{ user.company.catchPhrase }}"</p>
+  </div>
+</div>
