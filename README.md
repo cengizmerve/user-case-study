@@ -2,6 +2,56 @@
 
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.7.
 
+ Technology | Purpose |
+|-------------|----------|
+| **Angular 20** | Core framework (Standalone Components + Signals) |
+| **Ng-Zorro Ant Design** | UI component library (Ant Design for Angular) |
+| **RxJS** | Reactive streams, `finalize()` for lifecycle management |
+| **TypeScript** | Strongly typed, modern JavaScript |
+| **SCSS** | Modular styling, responsive layout |
+
+---
+
+## 🚀 Features
+
+✅ Fetches user data from [JSONPlaceholder API](https://jsonplaceholder.typicode.com/users)  
+✅ Displays user list with responsive cards  
+✅ Individual detail pages with hero-style design  
+✅ Search & live filtering  
+✅ Error handling with retry button  
+✅ Skeleton loader & full-screen spinner overlay  
+✅ Empty state view when no results are found  
+✅ Lazy-loaded routes for better performance  
+✅ Clean UI/UX with accessible and responsive design 
+
+## 🧠 Core Concepts
+
+### 1️⃣ Standalone Components
+Each component (`UserList`, `UserDetail`) is standalone — no NgModule is used.  
+Angular 20 allows direct imports within components for better modularity and performance.
+
+### 2️⃣ Service Layer
+`UserService` handles all API requests and isolates HTTP logic from UI, achieving *Separation of Concerns*.
+
+### 3️⃣ Routing & Lazy Loading
+- `/users` → User list page  
+- `/users/:id` → Lazy-loaded user detail page  
+
+Lazy loading reduces initial bundle size and improves performance.
+
+### 4️⃣ Reactive Data Handling
+`RxJS finalize()` ensures the `loading` state resets correctly whether the request succeeds or fails.
+
+### 5️⃣ Ng-Zorro Integration
+Ng-Zorro UI components are used for:
+- Buttons (`nz-button`)
+- Icons (`nz-icon`)
+- Skeleton loaders (`nz-skeleton`)
+- Empty states (`nz-empty`)
+- Loading spinners (`nz-spin`)
+
+This creates a **professional, enterprise-grade UI** consistent with Ant Design principles.
+
 ## Development server
 
 To start a local development server, run:
